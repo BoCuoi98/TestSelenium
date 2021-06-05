@@ -24,7 +24,7 @@ public class RegisterPatientPage {
     private By tfCountry = By.xpath("//*[@id=\"country\"]");
     private By tfPostalCode = By.xpath("//*[@id=\"postalCode\"]");
     private By tfPhone = By.name("phoneNumber");
-    //*[@id="relationship_type"]
+    private By btnConfirm = By.xpath("//*[@id=\"submit\"]");
 
     private By btnNext = By.xpath("//*[@id=\"next-button\"]");
     private By btnBack = By.xpath("//*[@id=\"prev-button\"]");
@@ -102,5 +102,8 @@ public class RegisterPatientPage {
     }
     public void clickBackButton() {
         driver.findElement(btnBack).click();
+    }
+    public void clickConfirmButton() {
+        driver.findElement(btnConfirm).click();
     }
 }
