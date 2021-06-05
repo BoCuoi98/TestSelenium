@@ -13,6 +13,7 @@ public class LoginPage {
         this.driver = driver;
     }
     public void setUserName(String userName) {
+        System.out.println(tfUsername);
         driver.findElement(tfUsername).sendKeys(userName);
     }
     public void setPassword(String password) {

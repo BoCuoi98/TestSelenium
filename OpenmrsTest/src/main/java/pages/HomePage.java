@@ -1,9 +1,11 @@
 package pages;
 
 import org.openqa.selenium.*;
+import pages.LoginPage;
 
 public class HomePage {
     private WebDriver driver;
+    protected LoginPage loginPage;
     private By btnLogout = By.xpath("//*[@id=\"navbarSupportedContent\"]/ul/li[3]/a");
     private By btnFindPatient = By.xpath("//*[@id=\"coreapps-activeVisitsHomepageLink-coreapps-activeVisitsHomepageLink-extension\"]");
     private By btnActiveVisits = By.xpath("//*[@id=\"org-openmrs-module-coreapps-activeVisitsHomepageLink-org-openmrs-module-coreapps-activeVisitsHomepageLink-extension\"]");
@@ -16,9 +18,17 @@ public class HomePage {
     private By btnSystemAdministration = By.xpath("//*[@id=\"coreapps-systemadministration-homepageLink-coreapps-systemadministration-homepageLink-extension\"]");
 
     public HomePage(WebDriver driver) {
+        loginPage = new LoginPage(driver);
+        loginPage.setUserName("Admin");
+        loginPage.setPassword("Admin123");
+        loginPage.setLocation("Inpatient Ward");
+        loginPage.clickLoginButton();
         this.driver = driver;
     }
     public void clickLogoutButton() {
         driver.findElement(btnLogout).click();
+    }
+    public void clickRegisterPatientButton() {
+        driver.findElement(btnRegisterPatient).click();
     }
 }

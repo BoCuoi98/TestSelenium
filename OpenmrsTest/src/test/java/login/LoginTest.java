@@ -52,8 +52,28 @@ public class LoginTest {
     @DisplayName("TC004")
     public void TestCase004() {
         loginPage = new LoginPage(driver);
-        loginPage.setUserName("Admin123");
+        loginPage.setUserName("Admin1");
         loginPage.setPassword("Admin123");
+        loginPage.setLocation("Inpatient Ward");
+        loginPage.clickLoginButton();
+        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("TC005")
+    public void TestCase005() {
+        loginPage = new LoginPage(driver);
+        loginPage.setPassword("Admin123");
+        loginPage.setLocation("Inpatient Ward");
+        loginPage.clickLoginButton();
+        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+    }
+
+    @Test
+    @DisplayName("TC006")
+    public void TestCase006() {
+        loginPage = new LoginPage(driver);
+        loginPage.setUserName("Admin123");
         loginPage.setLocation("Inpatient Ward");
         loginPage.clickLoginButton();
         Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());

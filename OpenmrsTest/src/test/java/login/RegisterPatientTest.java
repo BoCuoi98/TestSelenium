@@ -2,12 +2,12 @@ package login;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.*;
-import pages.HomePage;
+import org.openqa.selenium.chrome.ChromeDriver;
+import pages.RegisterPatientPage;
 
-public class LogoutTest {
-    WebDriver driver;
-    protected HomePage homePage;
+public class RegisterPatientTest {
+    private WebDriver driver;
+    protected RegisterPatientPage registerPatientPage;
 
     @BeforeEach
     public void refresh() {
@@ -17,15 +17,14 @@ public class LogoutTest {
     }
 
     @Test
-    @DisplayName("TC007")
-    public void TestCase007() {
-        homePage = new HomePage(driver);
-        homePage.clickLogoutButton();
-        Assertions.assertEquals("https://demo.openmrs.org/openmrs/login.htm", driver.getCurrentUrl());
+    @DisplayName("TC008")
+    public void TestCase008() {
+        registerPatientPage = new RegisterPatientPage(driver);
+        registerPatientPage.
     }
 
     @AfterEach
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 }
