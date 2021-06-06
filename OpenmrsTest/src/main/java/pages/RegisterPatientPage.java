@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.*;
 
+import java.util.List;
+
 public class RegisterPatientPage {
     private WebDriver driver;
     protected HomePage homePage;
@@ -24,6 +26,8 @@ public class RegisterPatientPage {
     private By tfCountry = By.xpath("//*[@id=\"country\"]");
     private By tfPostalCode = By.xpath("//*[@id=\"postalCode\"]");
     private By tfPhone = By.name("phoneNumber");
+    private By cbRelationshipType = By.xpath("//*[@id=\"relationship_type\"]");
+    private By tfPersonName = By.xpath("//*[@id=\"relationship\"]/p[2]/input[1]");
     private By btnConfirm = By.xpath("//*[@id=\"submit\"]");
 
     private By btnNext = By.xpath("//*[@id=\"next-button\"]");
@@ -36,26 +40,35 @@ public class RegisterPatientPage {
     }
 
     public String getError() {
-        String error = driver.findElement(lbError).getText();
-        return error;
+//        String error = driver.findElement(lbError).getAttribute("Style");
+        String err = "";
+        List<WebElement> errors = driver.findElements(lbError);
+        for (WebElement error:errors) {
+            if (error.getAttribute("Style") == "") {
+                err = error.getText();
+                break;
+            }
+        }
+        return err;
     }
-    public void setTfNameGiven(String nameGiven) {
+    public void setNameGiven(String nameGiven) {
         driver.findElement(tfGivenName).sendKeys(nameGiven);
     }
-    public void setTfNameMiddle(String nameMiddle) {
+    public void setNameMiddle(String nameMiddle) {
         driver.findElement(tfMiddleName).sendKeys(nameMiddle);
     }
-    public void setTfFamilyName(String familyName) {
+    public void setFamilyName(String familyName) {
         driver.findElement(tfFamilyName).sendKeys(familyName);
     }
     public void clickUnidentifiedPatient() {
         driver.findElement(chbUnidentifiedPatient).click();
     }
-    public void clickMaleGenderButton() {
-        driver.findElement(cbMaleGender).click();
-    }
-    public void clickFemaleGenderButton() {
-        driver.findElement(cbFemaleGender).click();
+    public void setGender(String gender) {
+        if (gender.equals("Male")) {
+            driver.findElement(cbMaleGender).click();
+        } else if (gender.equals("Female")) {
+            driver.findElement(cbFemaleGender).click();
+        } else ;
     }
     public void setDay(String day) {
         driver.findElement(tfDay).sendKeys(day);
@@ -76,26 +89,69 @@ public class RegisterPatientPage {
     public void setMonths(String months) {
         driver.findElement(tfYear).sendKeys(months);
     }
-    public void setTfAddress1(String address1) {
+    public void setAddress1(String address1) {
         driver.findElement(tfAddress1).sendKeys(address1);
     }
-    public void setTfAddress2(String address2) {
+    public void setAddress2(String address2) {
         driver.findElement(tfAddress2).sendKeys(address2);
     }
-    public void settfCityVillage(String cityVillage) {
+    public void setCityVillage(String cityVillage) {
         driver.findElement(tfCityVillage).sendKeys(cityVillage);
     }
-    public void settfStateProvince(String stateProvince) {
+    public void setStateProvince(String stateProvince) {
         driver.findElement(tfStateProvince).sendKeys(stateProvince);
     }
-    public void setTfCountry(String country) {
+    public void setCountry(String country) {
         driver.findElement(tfCountry).sendKeys(country);
     }
-    public void setTfPostalCode(String postalCode) {
+    public void setPostalCode(String postalCode) {
         driver.findElement(tfPostalCode).sendKeys(postalCode);
     }
-    public void setTfPhone(String phone) {
+    public void setPhone(String phone) {
         driver.findElement(tfPhone).sendKeys(phone);
+    }
+    public void setRelationshipType(String relationshipType) {
+        driver.findElement(cbRelationshipType).click();
+        int i;
+        switch (relationshipType) {
+            case "Doctor":
+                i = 1;
+                break;
+            case "Sibling":
+                i = 2;
+                break;
+            case "Parent":
+                i = 3;
+                break;
+            case "Aunt/Uncle":
+                i = 4;
+                break;
+            case "Supervisor":
+                i = 5;
+                break;
+            case "Patient":
+                i = 6;
+                break;
+            case "Child":
+                i = 7;
+                break;
+            case "Niece/Nephew":
+                i = 8;
+                break;
+            case "Supervisee":
+                i = 9;
+                break;
+            default:
+                i = 0;
+                break;
+        }
+        while (i!=0) {
+            driver.findElement(cbRelationshipType).sendKeys(Keys.ARROW_DOWN);
+            i--;
+        }
+    }
+    public void setPersonName(String personName) {
+        driver.findElement(tfPersonName).sendKeys(personName);
     }
     public void clickNextButton() {
         driver.findElement(btnNext).click();

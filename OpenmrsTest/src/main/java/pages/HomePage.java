@@ -28,6 +28,9 @@ public class HomePage {
     public void clickLogoutButton() {
         driver.findElement(btnLogout).click();
     }
+    public void clickFindPatient() {
+        driver.findElement(btnFindPatient).click();
+    }
     public void clickRegisterPatientButton() {
         driver.findElement(btnRegisterPatient).click();
     }
