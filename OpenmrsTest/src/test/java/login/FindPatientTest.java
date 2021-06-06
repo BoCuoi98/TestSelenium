@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.*;
 import pages.FindPatientsPage;
 
-public class ViewPatientTest {
+public class FindPatientTest {
     WebDriver driver;
     protected FindPatientsPage findPatientsPage;
 
@@ -17,10 +17,9 @@ public class ViewPatientTest {
     }
 
     @Test
-    @DisplayName("TC020")
-    public void TestCase020() {
+    @DisplayName("TC019")
+    public void TestCase019() {
         findPatientsPage = new FindPatientsPage(driver);
-        findPatientsPage.clickRecord("1");
 
     }
 
