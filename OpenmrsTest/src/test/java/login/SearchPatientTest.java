@@ -26,6 +26,6 @@ public class SearchPatientTest {
 
     @AfterEach
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
     }
 }
