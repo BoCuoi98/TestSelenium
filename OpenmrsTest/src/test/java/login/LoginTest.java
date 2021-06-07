@@ -2,7 +2,7 @@ package login;
 
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.*;
 import pages.LoginPage;
 
 public class LoginTest {
@@ -45,7 +45,7 @@ public class LoginTest {
         loginPage.setPassword("Admin111");
         loginPage.setLocation("Inpatient Ward");
         loginPage.clickLoginButton();
-        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+        Assertions.assertEquals("Invalid username/password. Please try again.", loginPage.getError());
     }
 
     @Test
@@ -56,7 +56,7 @@ public class LoginTest {
         loginPage.setPassword("Admin123");
         loginPage.setLocation("Inpatient Ward");
         loginPage.clickLoginButton();
-        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+        Assertions.assertEquals("Invalid username/password. Please try again.", loginPage.getError());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class LoginTest {
         loginPage.setPassword("Admin123");
         loginPage.setLocation("Inpatient Ward");
         loginPage.clickLoginButton();
-        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+        Assertions.assertEquals("Invalid username/password. Please try again.", loginPage.getError());
     }
 
     @Test
@@ -76,7 +76,7 @@ public class LoginTest {
         loginPage.setUserName("Admin123");
         loginPage.setLocation("Inpatient Ward");
         loginPage.clickLoginButton();
-        Assertions.assertEquals("https://demo.openmrs.org/openmrs/referenceapplication/login.page", driver.getCurrentUrl());
+        Assertions.assertEquals("Invalid username/password. Please try again.", loginPage.getError());
     }
 
     @AfterEach

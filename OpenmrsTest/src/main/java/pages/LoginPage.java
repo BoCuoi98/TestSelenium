@@ -4,6 +4,7 @@ import org.openqa.selenium.*;
 
 public class LoginPage {
     private WebDriver driver;
+    private By lbError = By.xpath("//*[@id=\"error-message\"]");
     private By tfUsername = By.xpath("//*[@id=\"username\"]");
     private By tfPassword = By.xpath("//*[@id=\"password\"]");
     private By lbLocotion = By.xpath("//*[@id=\"sessionLocationError\"]");
@@ -14,6 +15,10 @@ public class LoginPage {
     }
     public void setUserName(String userName) {
         driver.findElement(tfUsername).sendKeys(userName);
+    }
+    public String getError() {
+        String error = driver.findElement(lbError).getText();
+        return error;
     }
     public void setPassword(String password) {
         driver.findElement(tfPassword).sendKeys(password);
